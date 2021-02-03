@@ -12,16 +12,14 @@ let operator=''
 let lastDigit;
 
 
-function roundToTwo(num) {    
-    return +(Math.round(num + "e+4")  + "e-4");
-}
+
 
 
 
 const showNum=()=>{
     // Keyboard Eventlistener for buttons
     window.addEventListener('keydown',(e)=>{
-        if(e.key>=0&&e.key<=9){
+        if(e.key>=0&&e.key<=9&&display.textContent.length<=12){
                 
             if (operator==''){
                 display.textContent+=e.key
@@ -41,8 +39,10 @@ const showNum=()=>{
     })
     // Click Eventlistener 
 keys.forEach(key=>{
-        key.addEventListener('click',(e)=>{
-            if(e.target.dataset.key>=0&&e.target.dataset.key<=9){
+    
+        key.addEventListener('click',(e)=>{ 
+            
+            if(e.target.dataset.key>=0&&e.target.dataset.key<=9&&display.textContent.length<=12){
                 
                 if (operator==''){
                     display.textContent+=e.target.innerText
@@ -69,7 +69,7 @@ const calculate=()=>{
     window.addEventListener('keydown',(e)=>{
         if (operator){
             if(e.key=='+'||e.key=='_'||e.key=='/'||e.key=='*'){
-                firstNum=operate(operator,firstNum,secondNum)
+                firstNum=operate(operator,+firstNum,+secondNum)
             } 
         }
         if (e.key=='+'){
@@ -93,14 +93,14 @@ const calculate=()=>{
             backspace()
         }
         if(e.key=='='||e.key=='Enter'){
-            if (displayValue==''){
-                displayValue=operate(operator,+firstNum,secondNum)
-                displayValue=roundToTwo(displayValue)
+            if (!displayValue){
+                displayValue=operate(operator,+firstNum,+secondNum)
+                displayValue=displayValue.toFixed(5)
                 display.textContent=displayValue
             }else if (displayValue){
                 firstNum=+displayValue
-                displayValue=operate(operator,+firstNum,secondNum)
-                displayValue=roundToTwo(displayValue)
+                displayValue=operate(operator,+firstNum,+secondNum)
+                displayValue=displayValue.toFixed(5)
                 display.textContent=displayValue
             }
         }
@@ -111,7 +111,7 @@ const calculate=()=>{
     key.addEventListener('click',(e)=>{
         if (operator){
             if(e.target.dataset.key=='+'||e.target.dataset.key=='_'||e.target.dataset.key=='/'||e.target.dataset.key=='*'){
-                firstNum=operate(operator,firstNum,secondNum)
+                firstNum=operate(operator,+firstNum,+secondNum)
             } 
         }
         if (e.target.dataset.key=='+'){
@@ -140,14 +140,14 @@ const calculate=()=>{
 
 // click eventlistener for =
         if(e.target.dataset.key=='='){
-            if (displayValue==''){
-                displayValue=operate(operator,+firstNum,secondNum)
-                displayValue=roundToTwo(displayValue)
+             if (!displayValue){
+                displayValue=operate(operator,+firstNum,+secondNum)
+                displayValue=displayValue.toFixed(5)
                 display.textContent=displayValue
             }else if (displayValue){
                 firstNum=+displayValue
-                displayValue=operate(operator,+firstNum,secondNum)
-                displayValue=roundToTwo(displayValue)
+                displayValue=operate(operator,+firstNum,+secondNum)
+                displayValue=displayValue.toFixed(5)
                 display.textContent=displayValue
             }
         }

@@ -4,9 +4,11 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 body   {
  display: flex;
- justify-content: center;
+ flex-direction: column;
+ justify-content:space-evenly;
  align-items: center;
  min-height: 100vh;
  background: #091921;
@@ -16,9 +18,9 @@ body::before{
   position:absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(#e91e63,#ffc107);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(#411fbb,#ffffff);
   clip-path: circle(22% at 30% 20%);
 }
 body::after{
@@ -32,6 +34,7 @@ body::after{
   clip-path: circle(20% at 70% 90%);
 }
 #container {
+  flex-wrap: wrap;
   position: relative;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 6px ;
@@ -53,14 +56,14 @@ align-self: center;
  justify-self: center;
 }
 .display {
-  height: 30px;
+  height: 100px;
   width: 100%;
   grid-column: span 4;
+  grid-auto-rows: minmax(50px,100px);
   font-size: 30px;
   padding:10px;
-  color: wheat;
+  color: white;
   text-align: right;
-  color: #ffffff;
   background: transparent;
 }
 .clearAll {
@@ -69,14 +72,15 @@ align-self: center;
 .key {
   padding-top: 2em;
  text-align: center;
- color:white;
+ color:whitesmoke;
   user-select: none;
-  font-weight: 400;
+  font-size: 25px;
+  font-weight: 500;
   cursor: pointer;
   width: 100%;
   height: 100%;
-  border-bottom:1px solid rgba(255,255,255,.02);
-  border-right:1px solid rgba(255,255,255,.02);
+  border-bottom:1px solid rgba(255,255,255,.01);
+  border-right:1px solid rgba(255,255,255,.01);
 }
 .key:hover {
   transform: scale(1.1);
