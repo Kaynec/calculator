@@ -11,11 +11,6 @@ let secondNum=''
 let operator=''
 let lastDigit;
 
-
-
-
-
-
 const showNum=()=>{
     // Keyboard Eventlistener for buttons
     window.addEventListener('keydown',(e)=>{
@@ -135,9 +130,6 @@ const calculate=()=>{
             backspace()
         }
 
-
-
-
 // click eventlistener for =
         if(e.target.dataset.key=='='){
              if (!displayValue){
@@ -157,8 +149,6 @@ const calculate=()=>{
 showNum()
 calculate()
 
-
-
 // clear screen
 const clearScreen=()=>{
 display.textContent=""
@@ -168,11 +158,8 @@ display.textContent=""
  operator=''
 }
 const backspace=()=>{
-    
     display.textContent= display.textContent.substring(0, display.textContent.length - 1);
-    
 }
-
 // The operator functions 
 const add = (num1,num2)=> num1 + num2 
 const subtract=(num1,num2)=> num1 - num2
